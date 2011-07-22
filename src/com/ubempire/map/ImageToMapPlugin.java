@@ -16,7 +16,7 @@ public class ImageToMapPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         PluginDescriptionFile description = getDescription();
-        File pluginDir = new File("plugins/BananaImageToMap/");
+        File pluginDir = getDataFolder();
         if (!pluginDir.exists()){pluginDir.mkdir();System.out.println(description.getFullName() + " Directory doesn't exist! Creating it.");};
         
       /*  // Removed, instead wait until called by bukkit.yml or an external manager
@@ -54,7 +54,7 @@ public class ImageToMapPlugin extends JavaPlugin {
         if (generator == null) {
 	        // Generate a new map if need be
 		if (id == null) {id = "earth";};
-		imageFile = "plugins/BananaImageToMap/" + id + ".jpg";
+		imageFile = getDataFolder() + "/" + id + ".jpg";
 		if (!new File(imageFile).exists()) {
 			long start = System.currentTimeMillis();
           	System.out.println("[" + getDescription().getName() + "] Writing heightmap to " + imageFile + "...");
